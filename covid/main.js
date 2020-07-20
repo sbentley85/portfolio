@@ -5,6 +5,9 @@ const url2 =''
 const input = document.querySelector('#input');
 const submit = document.querySelector('#search');
 
+
+
+// Adds comma separators to retreived data
 function addCommas(nStr)
 {
 	nStr += '';
@@ -18,6 +21,8 @@ function addCommas(nStr)
 	return x1 + x2;
 }
 
+
+// Converts search term to title case for 'info' section
 function titleCase(str) { 
   str = str.toLowerCase().split(' '); 
   for (var i = 0; i < str.length; i++) { 
@@ -26,6 +31,8 @@ function titleCase(str) {
   return str.join(' '); 
 } 
 
+
+// randers response data to table
 const renderTable = (res) => {
     let info = `<p>Covid 19 cases by date for ${titleCase(input.value)} sourced from <a href="https://github.com/CSSEGISandData/COVID-19">Johns Hopkins CSSE</a>
      via <a href="https://covid19api.com/">Covid 19 API</a></p>`
@@ -76,26 +83,23 @@ const renderTable = (res) => {
 
 }
 
+
+//renders response data into graph
 const renderGraph = (res) => {
-  
+  // removes any previous chart data to avoid any conflicts on mouseover  
   document.getElementById('myChart').remove();
   document.getElementById('graph').innerHTML = '<canvas id="myChart" width="800" height="400"></canvas>';
+  var ctx = document.getElementById('myChart');  
 
 
-
-  var ctx = document.getElementById('myChart');
-  
-    
-
+  // creates graph data from response
   const labels = []
   const confirmed = [];
   const deaths = [];
   const active = [];
   
   for (let i = 0; i < res.length; i++) {
-    
-
-    const newDate = moment(res[i].Date)  // .year(2019).month(7).date(i*7+1).startOf('day');
+    const newDate = moment(res[i].Date)
     
     labels.push(newDate)
     confirmed.push(res[i].Confirmed)
@@ -134,33 +138,72 @@ const renderGraph = (res) => {
       data: active
     }
   ];
-  
+
+  // sets relevant chart options based on selected radio button
+  const chartType = document.getElementById('linear').checked ? 'linear' : 'logarithmic';
+  const chartOption = (chartType === 'linear') ? {
+    responsive: true,
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'month'
+        }
+      }]
+    }
+    
+    
+  } : {
+    responsive: true,
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'month'
+        }
+      }],
+      yAxes: [{
+        type: 'logarithmic',
+        ticks: {
+          min: 0,
+          max: 10000000,
+          callback: function (value, index, values) {
+              if (value === 10000000) return "10M";
+              if (value === 1000000) return "1M";
+              if (value === 100000) return "100K";
+              if (value === 10000) return "10K";
+              if (value === 1000) return "1K";
+              if (value === 100) return "100";
+              if (value === 10) return "10";
+              if (value === 0) return "0";
+              return null;
+          }
+        }
+      }]
+    }
+    
+    
+  } 
+    
   
 
-
+  //creates chart
   var myChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: labels,
         datasets: datasets
       },
-      options: {
-        responsive: true,
-        scales: {
-          xAxes: [{
-            type: 'time',
-            time: {
-              unit: 'month'
-            }
-          }],
-        }
-        
-        
-      }
+      options: chartOption
   });
+
+  // shows radio buttons
+  document.querySelector(".radio").style.display = "block";
   
 }
 
+
+// sends http request on submit
 const getCountry = async () => {
     const urlToFetch = `${url1}${input.value}${url2}`;
     
@@ -172,9 +215,11 @@ const getCountry = async () => {
       const response = await fetch(urlToFetch, requestOptions)
       if (response.ok) {
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
+        
         await renderGraph(jsonResponse);
         await renderTable(jsonResponse);
+        localStorage.setItem('data', JSON.stringify(jsonResponse))
+        
         
       }
     } catch (error) {
@@ -184,6 +229,13 @@ const getCountry = async () => {
 
 
 submit.addEventListener('click', getCountry)
+const radios = document.forms['formA'].elements['chart-type'];
+
+for (let i = 0; i < radios.length; i++) {
+  radios[i].onclick = () => {
+    renderGraph(JSON.parse(localStorage.getItem('data')));
+  }
+}
 
 
 
