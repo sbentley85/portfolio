@@ -1,4 +1,6 @@
 
+
+
 const url1 ='https://api.covid19api.com/total/dayone/country/';
 const url2 =''
 
@@ -26,7 +28,7 @@ function titleCase(str) {
   return str.join(' '); 
 } 
 
-const render = (res) => {
+const renderTable = (res) => {
     let info = `<p>Covid 19 cases by date for ${titleCase(input.value)} sourced from <a href="https://github.com/CSSEGISandData/COVID-19">Johns Hopkins CSSE</a>
      via <a href="https://covid19api.com/">Covid 19 API</a></p>`
     let caseList = [`<table><thead><tr><th>Date</th><th>Confirmed</th><th>New Cases</th><th>Deaths</th><th>New Deaths</th><th>Recovered</th><th>Active</th></tr></thead><tbody>`]
@@ -76,6 +78,83 @@ const render = (res) => {
 
 }
 
+const renderGraph = (res) => {
+  var ctx = document.getElementById('myChart');
+  const labels = []
+  const confirmed = [];
+  const deaths = [];
+  const active = [];
+  
+  for (let i = 0; i < res.length; i++) {
+    
+
+    const newDate = moment(res[i].Date)  // .year(2019).month(7).date(i*7+1).startOf('day');
+    
+    labels.push(newDate)
+    confirmed.push(res[i].Confirmed)
+    deaths.push(res[i].Deaths)
+    active.push(res[i].Active)
+  }
+  const datasets = [
+    {
+      label: 'Confirmed cases',
+      backgroundColor: 'rgb(94, 135, 229)',
+      fill: false,
+      borderColor: 'rgb(94, 135, 229)',
+      pointBackgroundColor: 'transparent',
+      pointBorderColor: 'transparent',
+      pointHoverBackgroundColor: 'rgb(94, 135, 229)',
+      data: confirmed
+    },
+    {
+      label: 'Deaths',
+      backgroundColor: 'rgb(255, 99, 132)',
+      fill: false,
+      borderColor: 'rgb(255, 99, 132)',
+      pointBackgroundColor: 'transparent',
+      pointBorderColor: 'transparent',
+      pointHoverBackgroundColor: 'rgb(255, 99, 132)',
+      data: deaths
+    },
+    {
+      label: 'Active Cases',
+      backgroundColor: 'rgb(49, 216, 144)',
+      fill: false,
+      borderColor: 'rgb(49, 216, 144)',
+      pointBackgroundColor: 'transparent',
+      pointBorderColor: 'transparent',
+      pointHoverBackgroundColor: 'rgb(49, 216, 144)',
+      data: active
+    }
+  ];
+  
+  if (myChart) {
+    myChart.destroy();
+  }
+
+
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: datasets
+      },
+      options: {
+        responsive: true,
+        scales: {
+          xAxes: [{
+            type: 'time',
+            time: {
+              unit: 'month'
+            }
+          }],
+        }
+        
+        
+      }
+  });
+}
+
 const getCountry = async () => {
     const urlToFetch = `${url1}${input.value}${url2}`;
     
@@ -87,8 +166,10 @@ const getCountry = async () => {
       const response = await fetch(urlToFetch, requestOptions)
       if (response.ok) {
         const jsonResponse = await response.json();
-        console.log(jsonResponse)
-        render(jsonResponse);
+        console.log(jsonResponse);
+        await renderGraph(jsonResponse);
+        await renderTable(jsonResponse);
+        
       }
     } catch (error) {
       console.log(error)
