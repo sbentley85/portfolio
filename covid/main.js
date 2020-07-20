@@ -1,6 +1,4 @@
 
-
-
 const url1 ='https://api.covid19api.com/total/dayone/country/';
 const url2 =''
 
@@ -79,7 +77,16 @@ const renderTable = (res) => {
 }
 
 const renderGraph = (res) => {
+  
+  document.getElementById('myChart').remove();
+  document.getElementById('graph').innerHTML = '<canvas id="myChart" width="800" height="400"></canvas>';
+
+
+
   var ctx = document.getElementById('myChart');
+  
+    
+
   const labels = []
   const confirmed = [];
   const deaths = [];
@@ -128,9 +135,7 @@ const renderGraph = (res) => {
     }
   ];
   
-  if (myChart) {
-    myChart.destroy();
-  }
+  
 
 
   var myChart = new Chart(ctx, {
@@ -153,6 +158,7 @@ const renderGraph = (res) => {
         
       }
   });
+  
 }
 
 const getCountry = async () => {
