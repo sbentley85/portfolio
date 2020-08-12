@@ -206,6 +206,15 @@ svg {
   vertical-align: middle;
 }
 
+#sql {
+  
+  height: 45px;
+  width: 45px;
+  color: #6c757d;
+}
+
+
+
 table {
   border-collapse: collapse;
 }
