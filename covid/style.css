@@ -17,7 +17,7 @@ p {
 
 .container {
     display: flex;
-    
+    width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -64,6 +64,8 @@ button {
 
 .results {
     table-layout: fixed;
+    width: 100%;
+    overflow-x: scroll;
 }
 
 .radio {
@@ -72,6 +74,11 @@ button {
 
 .graph {
     margin-bottom: 1em;
+    width: 90%;
+    
+    max-width: 800px;
+    max-height: 400px;
+    position: relative;
 }
 
 footer {
@@ -99,6 +106,8 @@ th {
 
 table {
     width: 100%;
+    min-width: 815px;
+    overflow-x: scroll;
     border-collapse: collapse;
     display: block;
     height: 100%;
@@ -133,14 +142,4 @@ tr {
 
 tr:nth-of-type(odd) { 
     background-color: #eee; 
-  }
-
-  @media (max-width: 600px) {
-      
-
-      th {
-          width: 50px;
-          word-wrap: break-word;
-      }
-      
   }

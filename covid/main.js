@@ -23,12 +23,18 @@ function addCommas(nStr)
 
 
 // Converts search term to title case for 'info' section
-function titleCase(str) { 
-  str = str.toLowerCase().split(' '); 
-  for (var i = 0; i < str.length; i++) { 
-    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);  
-  } 
-  return str.join(' '); 
+function titleCase(str) {
+  
+  if(str.length > 3) {
+    str = str.toLowerCase().split(' '); 
+    for (var i = 0; i < str.length; i++) { 
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);  
+    } 
+    return str.join(' '); 
+  } else {
+    return str.toUpperCase();
+  }
+  
 } 
 
 
@@ -88,7 +94,7 @@ const renderTable = (res) => {
 const renderGraph = (res) => {
   // removes any previous chart data to avoid any conflicts on mouseover  
   document.getElementById('myChart').remove();
-  document.getElementById('graph').innerHTML = '<canvas id="myChart" width="800" height="400"></canvas>';
+  document.getElementById('graph').innerHTML = '<canvas id="myChart" width="800px" height="400px"></canvas>';
   var ctx = document.getElementById('myChart');  
 
 
