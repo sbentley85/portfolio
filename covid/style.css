@@ -65,7 +65,7 @@ button {
 .results {
     table-layout: fixed;
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .radio {
@@ -107,7 +107,7 @@ th {
 table {
     width: 815px;
     min-width: 815px;
-    overflow-x: scroll;
+    overflow-x: auto;
     border-collapse: collapse;
     display: block;
     height: 100%;
