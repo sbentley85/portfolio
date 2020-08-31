@@ -10078,8 +10078,8 @@ p.lead {
   }
 
   .img-project {
-    max-width: 10rem;
-    max-height: 10rem;
+    max-width: 15rem;
+    max-height: 15rem;
     border: 0.5rem solid rgba(255, 255, 255, 0.2);
   }
 
@@ -10141,6 +10141,13 @@ section.resume-section .resume-section-content {
   section.resume-section {
     min-height: 100vh;
   }
+
+  .img-project {
+    max-width: 15rem;
+    max-height: 15rem;
+    border: 0.5rem solid rgba(255, 255, 255, 0.2);
+  }  
+
 }
 @media (min-width: 992px) {
   section.resume-section {
