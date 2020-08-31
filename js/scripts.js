@@ -48,7 +48,7 @@ let observer = new IntersectionObserver(
     entries.forEach(entry => {
         if(entry.isIntersecting) {
             entry.target.classList.add('slide-left');
-            console.log('slide');
+            
         } else {
             entry.target.classList.remove('slide-left');
         }
