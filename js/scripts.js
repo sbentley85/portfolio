@@ -40,3 +40,22 @@
         target: "#sideNav",
     });
 })(jQuery); // End of use strict
+
+// project slide in animation triggered when in viewport
+
+let observer = new IntersectionObserver(
+    (entries, observer) => { 
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('slide-left');
+            console.log('slide');
+        } else {
+            entry.target.classList.remove('slide-left');
+        }
+        
+        
+        
+      });
+    });
+
+    document.querySelectorAll(".project").forEach(project => { observer.observe(project) });

@@ -10157,3 +10157,18 @@ section.resume-section .resume-section-content {
     padding-bottom: 3rem;
   }
 }
+
+@keyframes slide-left {
+  from {
+    right: 100%;
+  }
+  to {
+    right: 0%;
+  }
+}
+
+.slide-left {
+  animation: slide-left 2s;
+  -webkit-animation: slide-left 2s;
+  position: relative;
+}
