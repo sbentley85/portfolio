@@ -1,0 +1,70 @@
+body {
+    font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: grey;
+    nav {
+        background-color: deepskyblue;
+    }
+    a, .highlight {
+        color: deepskyblue
+    }
+    #projects, #education {
+        background-color: rgba(248, 244, 244, 0.4);    
+    }
+
+    &.dark-mode {
+        background-color: #202123;
+        color: white !important;
+        #projects, #education, footer, .sidenav {
+            background-color: #202123;
+        }
+        .card, .card-panel, .collection, .collection-item, .collection-header {
+           background-color: rgba(255,255,255,0.2) !important; 
+        }
+
+        .sidenav li>a{
+            color: white !important;
+        }
+    }
+    
+    
+}
+
+
+
+.section {
+    min-height: 100vh;
+}
+
+.card-links {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#skills .fa-4x {
+    margin: 5px 10px;
+}
+
+#sql {
+  
+    height: 60px;
+    width: 50px;
+    
+    margin: 0 10px;
+  }
+
+
+
+  .about-text {
+      margin: 2rem 0;
+  }
+
+  .contact-icons {
+      margin-right: 15px;
+  }
+
+  #light-mode {
+      display:none;
+  }
+

@@ -1,0 +1,61 @@
+body {
+  font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: grey;
+}
+body nav {
+  background-color: deepskyblue;
+}
+body a, body .highlight {
+  color: deepskyblue;
+}
+body #projects, body #education {
+  background-color: rgba(248, 244, 244, 0.4);
+}
+body.dark-mode {
+  background-color: #202123;
+  color: white !important;
+}
+body.dark-mode #projects, body.dark-mode #education, body.dark-mode footer, body.dark-mode .sidenav {
+  background-color: #202123;
+}
+body.dark-mode .card, body.dark-mode .card-panel, body.dark-mode .collection, body.dark-mode .collection-item, body.dark-mode .collection-header {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+body.dark-mode .sidenav li > a {
+  color: white !important;
+}
+
+.section {
+  min-height: 100vh;
+}
+
+.card-links {
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#skills .fa-4x {
+  margin: 5px 10px;
+}
+
+#sql {
+  height: 60px;
+  width: 50px;
+  margin: 0 10px;
+}
+
+.about-text {
+  margin: 2rem 0;
+}
+
+.contact-icons {
+  margin-right: 15px;
+}
+
+#light-mode {
+  display: none;
+}
+
+/*# sourceMappingURL=main.css.map */
