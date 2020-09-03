@@ -1,6 +1,7 @@
 body {
   font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: grey;
+  transition: color 1s ease, background-color 1s ease;
 }
 body nav {
   background-color: deepskyblue;

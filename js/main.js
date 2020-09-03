@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     })
 
+    // tooltips
+
+    var toolTips = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(toolTips, {});
+
     // Form validation
     const constraints = {
         name: {
