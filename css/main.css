@@ -58,4 +58,8 @@ body.dark-mode .sidenav li > a {
   display: none;
 }
 
+.success-container {
+  height: 400px;
+}
+
 /*# sourceMappingURL=main.css.map */
