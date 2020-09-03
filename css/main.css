@@ -25,6 +25,12 @@ body.dark-mode .card, body.dark-mode .card-panel, body.dark-mode .collection, bo
 body.dark-mode .sidenav li > a {
   color: white !important;
 }
+body.dark-mode nav {
+  background-color: #2d5cb9;
+}
+body.dark-mode section a, body.dark-mode .highlight {
+  color: #2d5cb9;
+}
 
 .section {
   min-height: 100vh;

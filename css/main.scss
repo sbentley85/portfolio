@@ -1,14 +1,16 @@
 $transition-effects: color 1s ease, background-color 1s ease;
+$main-color: deepskyblue;
+$dark-color: #2d5cb9;
 
 body {
     font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     color: grey;
     transition: $transition-effects;
     nav {
-        background-color: deepskyblue;
+        background-color: $main-color;
     }
     a, .highlight {
-        color: deepskyblue
+        color: $main-color
     }
     #projects, #education {
         background-color: rgba(248, 244, 244, 0.4);    
@@ -26,6 +28,12 @@ body {
 
         .sidenav li>a{
             color: white !important;
+        }
+        nav {
+            background-color: $dark-color;
+        }
+        section a, .highlight {
+            color: $dark-color
         }
     }
     
