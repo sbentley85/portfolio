@@ -1,39 +1,69 @@
 body {
-  font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  color: grey;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #3a3838;
   transition: color 1s ease, background-color 1s ease;
 }
-body nav {
-  background-color: deepskyblue;
+body .collapsible-header, body .collapsible-body, body .collapsible {
+  background-color: rgba(1, 1, 1, 0);
+  border: none;
+  box-shadow: none;
 }
-body a, body .highlight {
-  color: deepskyblue;
+body #about, body nav, body #contact, body #skills {
+  background: linear-gradient(90deg, #117bc9 0%, #4bd5e7 100%);
+  box-shadow: none;
+  border: none;
+  -webkit-box-shadow: none;
+}
+body #about a, body #about .highlight, body nav a, body nav .highlight {
+  color: #fff;
 }
 body #projects, body #education {
+  background-color: #fff;
+}
+body #skills {
   background-color: rgba(248, 244, 244, 0.4);
 }
 body.dark-mode {
-  background-color: #202123;
-  color: white !important;
+  color: #fff;
 }
-body.dark-mode #projects, body.dark-mode #education, body.dark-mode footer, body.dark-mode .sidenav {
-  background-color: #202123;
+body.dark-mode nav, body.dark-mode section, body.dark-mode #contact, body.dark-mode #about, body.dark-mode #skills {
+  background: linear-gradient(90deg, #312f2f 0%, #3f484d 100%);
 }
-body.dark-mode .card, body.dark-mode .card-panel, body.dark-mode .collection, body.dark-mode .collection-item, body.dark-mode .collection-header {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+body.dark-mode a, body.dark-mode .highlight, body.dark-mode h3 {
+  color: #4bd5e7 !important;
 }
-body.dark-mode .sidenav li > a {
-  color: white !important;
+body.dark-mode .card, body.dark-mode .card-panel, body.dark-mode .collection, body.dark-mode .collection-header, body.dark-mode .collection-item, body.dark-mode .collection-with-header, body.dark-mode .card-reveal {
+  background-color: #3f484d !important;
+  border: none !important;
 }
-body.dark-mode nav {
-  background-color: #2d5cb9;
-}
-body.dark-mode section a, body.dark-mode .highlight {
-  color: #2d5cb9;
+body.dark-mode input {
+  color: #fff !important;
 }
 
-.section {
-  min-height: 100vh;
+#bio {
+  font-weight: 300;
+}
+
+.collapsible-header {
+  justify-content: center;
+  padding: 0;
+}
+
+.collapsible-body {
+  padding: 0;
+}
+
+#read-more {
+  margin: 0;
+}
+
+.section, #contact {
+  min-height: calc(100vh - 56px);
+}
+@media only screen and (min-width: 601px) {
+  .section, #contact {
+    min-height: calc(100vh - 64px);
+  }
 }
 
 .card-links {
@@ -47,10 +77,8 @@ body.dark-mode section a, body.dark-mode .highlight {
   margin: 5px 10px;
 }
 
-#sql {
-  height: 60px;
-  width: 50px;
-  margin: 0 10px;
+.skill-icon {
+  display: inline;
 }
 
 .about-text {
@@ -67,6 +95,31 @@ body.dark-mode section a, body.dark-mode .highlight {
 
 .success-container {
   height: 400px;
+}
+
+footer > .row {
+  margin-bottom: 0;
+}
+
+#contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#contact-form-div {
+  width: 90%;
+}
+@media only screen and (min-width: 601px) {
+  #contact-form-div {
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 601px) {
+  #contact-form-div {
+    width: 40%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
