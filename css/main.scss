@@ -85,7 +85,7 @@ body {
     
 }
 
-#bio {
+#bio, .date {
     font-weight: 300;
 }
 
@@ -159,9 +159,6 @@ footer>.row {
     
 }
 
-#contact-details {
-    
-}
 
 #contact-form-div {
     width: 90%;
@@ -174,6 +171,10 @@ footer>.row {
         width: 40%;
     }
 
+}
+
+#rc-anchor-container {
+    margin-top: 1em;
 }
 
 

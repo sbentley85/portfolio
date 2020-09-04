@@ -40,7 +40,7 @@ body.dark-mode input {
   color: #fff !important;
 }
 
-#bio {
+#bio, .date {
   font-weight: 300;
 }
 
@@ -120,6 +120,10 @@ footer > .row {
   #contact-form-div {
     width: 40%;
   }
+}
+
+#rc-anchor-container {
+  margin-top: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */
