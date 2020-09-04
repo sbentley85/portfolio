@@ -1,49 +1,116 @@
 $transition-effects: color 1s ease, background-color 1s ease;
-$main-color: deepskyblue;
-$dark-color: #2d5cb9;
+
+// Light mode color variables
+$background-light: rgb(75, 213, 231);
+$background-light-1: #fff;
+$background-light-2: rgba(248, 244, 244, 0.4);
+$accent-light: #fff;
+$text-light: rgb(58, 56, 56);
+
+@mixin gradient {
+    
+    background: linear-gradient(90deg, rgba(17,123,201,1) 0%, rgba(75,213,231,1) 100%);
+}
+
+// Dark mode color variables
+$background-dark: rgb(49, 47, 47);
+$background-dark-1: rgb(49, 47, 47);
+$background-dark-2: rgb(63, 72, 77);
+$accent-dark: rgb(75, 213, 231);
+$text-dark: #fff;
+
+@mixin gradient-dark {
+    
+    background: linear-gradient(90deg, rgb(49, 47, 47) 0%, rgb(63, 72, 77) 100%);
+}
 
 body {
-    font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    color: grey;
-    transition: $transition-effects;
-    nav {
-        background-color: $main-color;
+
+    .collapsible-header, .collapsible-body, .collapsible {
+        background-color: rgba(1,1,1,0);
+        border: none;
+        box-shadow: none;
     }
-    a, .highlight {
-        color: $main-color
+    #about, nav, #contact, #skills {
+        @include gradient;
+        box-shadow: none;
+        border: none;
+        -webkit-box-shadow: none;
+    }
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: $text-light;
+    transition: $transition-effects;
+    
+    #about, nav {
+        a, .highlight {
+            color: $accent-light;
+        }
     }
     #projects, #education {
-        background-color: rgba(248, 244, 244, 0.4);    
+        background-color: $background-light-1;    
     }
 
+    #skills {
+        background-color: $background-light-2;
+    }
+
+    
+
     &.dark-mode {
-        background-color: #202123;
-        color: white !important;
-        #projects, #education, footer, .sidenav {
-            background-color: #202123;
+        color: $text-dark;
+        
+        nav, section, #contact, #about, #skills {
+            @include gradient-dark;
         }
-        .card, .card-panel, .collection, .collection-item, .collection-header {
-           background-color: rgba(255,255,255,0.2) !important; 
+        
+        
+        a, .highlight, h3 {
+            color: $accent-dark !important;
+        }
+        
+        
+            
+        .card, .card-panel, .collection, .collection-header, .collection-item, .collection-with-header, .card-reveal {
+            background-color: $background-dark-2 !important;
+            border: none !important;
         }
 
-        .sidenav li>a{
-            color: white !important;
+        input {
+            color: $text-dark !important;
         }
-        nav {
-            background-color: $dark-color;
-        }
-        section a, .highlight {
-            color: $dark-color
-        }
+
+        
     }
     
     
 }
 
+#bio {
+    font-weight: 300;
+}
+
+.collapsible-header {
+    justify-content: center;
+    padding: 0;
+}
+
+.collapsible-body {
+    padding: 0;
+}
+
+#read-more {
+    margin: 0;
+}
+
+.section, #contact {
+    // Section fills to bottom of viewport
+    min-height: calc(100vh - 56px);
+
+    @media only screen and (min-width: 601px) {
+        min-height: calc(100vh - 64px);
+    }
 
 
-.section {
-    min-height: 100vh;
 }
 
 .card-links {
@@ -57,30 +124,59 @@ body {
     margin: 5px 10px;
 }
 
-#sql {
-  
-    height: 60px;
-    width: 50px;
+
+.skill-icon {
+    display: inline;
+}
+
+
+.about-text {
+    margin: 2rem 0;
+}
+
+.contact-icons {
+    margin-right: 15px;
+}
+
+#light-mode {
+    display:none;
+}
+
+.success-container {
+    height: 400px;
+}
+
+footer>.row {
+    margin-bottom: 0;
+}
+
+#contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
     
-    margin: 0 10px;
-  }
+    
+}
+
+#contact-details {
+    
+}
+
+#contact-form-div {
+    width: 90%;
+
+    @media only screen and (min-width: 601px) {
+        width: 50%;
+    }
+
+    @media only screen and (min-width: 601px) {
+        width: 40%;
+    }
+
+}
 
 
-
-  .about-text {
-      margin: 2rem 0;
-  }
-
-  .contact-icons {
-      margin-right: 15px;
-  }
-
-  #light-mode {
-      display:none;
-  }
-
-  .success-container {
-      height: 400px;
-  }
+  
   
 

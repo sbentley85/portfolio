@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // init Scrollspy
     const scrollSpy = document.querySelectorAll('.scrollspy');
     M.ScrollSpy.init(scrollSpy, {
-        scrollOffset: 20
+        scrollOffset: 64
     })
 
 
@@ -80,6 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
         alert(errorMessage);
       }
     }, false);
+
+    // Collapsable div
+
+    var collapsible = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(collapsible, {});
 
 
   });
